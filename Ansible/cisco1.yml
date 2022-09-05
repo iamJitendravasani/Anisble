@@ -1,0 +1,13 @@
+---
+- name: Get serial number
+  hosts: routers
+  gather_facts: no
+  connection: network_cli
+  tasks:
+    - name: Facts
+      ios_facts:
+        gather_subset: all
+    - name: Disaplay model and serial number
+      debug:
+        msg: "Model number of {{ansible_net_hostname }} is {{ ansible_net_model}} and serial number is {{ ansible_net_serialnum}}"
+        ...
